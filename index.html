@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FUOYE Screening Point Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist&display=swap" rel="stylesheet">
+     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <div class="app">
+        <!-- Header -->
+        <header class="header">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo-section">
+                        <!-- <div class="logo-placeholder">
+                          <i data-lucide="graduation-cap"></i> -->
+                           <img src="./img/sug.jpg" alt="fuoye-sug-logo" class="logo-placeholder">
+                        
+                        <h1>FUOYE Screening Calculator</h1>
+                    </div>
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                        <i data-lucide="sun" class="sun-icon"></i>
+                        <i data-lucide="moon" class="moon-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main">
+            <div class="container">
+                <div class="calculator-card">
+                    <div class="card-header">
+                        <h2>Calculate Your Screening Points</h2>
+                        <p>Enter your details to calculate your FUOYE screening points</p>
+                        <a href="https://wa.me/+2349164613487" class="btn-primary" style="margin-top: 10px; text-align: center; justify-content: center;" target="_blank">
+                                    <i data-lucide="message-circle"></i>
+                                    Contact SUG PRO
+                                </a>
+                    </div>
+
+                    <form class="calculator-form" id="calculatorForm">
+                        <!-- JAMB Score Section -->
+                        <div class="form-section fade-in">
+                            <label class="form-label">
+                                <i data-lucide="target"></i>
+                                JAMB Score (0-400)
+                            </label>
+                            <div class="input-wrapper">
+                                <input 
+                                    type="number" 
+                                    id="jambScore" 
+                                    class="form-input" 
+                                    placeholder="Enter your JAMB score"
+                                    min="0" 
+                                    max="400"
+                                    required
+                                >
+                                <div class="input-suffix">/ 400</div>
+                            </div>
+                            <div class="score-preview">
+                                Points: <span id="jambPoints">0.00</span> / 60
+                            </div>
+                        </div>
+
+                        <!-- O-Level Sittings Section -->
+                        <div class="form-section fade-in">
+                            <label class="form-label">
+                                <i data-lucide="calendar"></i>
+                                O-Level Sittings
+                            </label>
+                            <div class="radio-group">
+                                <label class="radio-option">
+                                    <input type="radio" name="sittings" value="one" checked>
+                                    <div class="radio-content">
+                                        <div class="radio-title">One Sitting</div>
+                                        <div class="radio-subtitle">+10 points</div>
+                                    </div>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="sittings" value="two">
+                                    <div class="radio-content">
+                                        <div class="radio-title">Two Sittings</div>
+                                        <div class="radio-subtitle">+6 points</div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Subject Grades Section -->
+                        <div class="form-section fade-in">
+                            <label class="form-label">
+                                <i data-lucide="book-open"></i>
+                                Subject Grades
+                            </label>
+                            
+                            <!-- One Sitting Subjects -->
+                            <div id="oneSittingSubjects" class="subjects-container">
+                                <div class="subjects-grid">
+                                    <div class="subject-select" data-subject="0">
+                                        <button type="button" class="select-trigger">
+                                            <span class="select-value">Select Grade</span>
+                                            <i data-lucide="chevron-down"></i>
+                                        </button>
+                                        <div class="select-content">
+                                            <div class="select-item" data-value="6" data-grade="A1">A1 (6 pts)</div>
+                                            <div class="select-item" data-value="5" data-grade="B2">B2 (5 pts)</div>
+                                            <div class="select-item" data-value="4" data-grade="B3">B3 (4 pts)</div>
+                                            <div class="select-item" data-value="3" data-grade="C4">C4 (3 pts)</div>
+                                            <div class="select-item" data-value="2" data-grade="C5">C5 (2 pts)</div>
+                                            <div class="select-item" data-value="1" data-grade="C6">C6 (1 pt)</div>
+                                        </div>
+                                    </div>
+                                    <div class="subject-select" data-subject="1">
+                                        <button type="button" class="select-trigger">
+                                            <span class="select-value">Select Grade</span>
+                                            <i data-lucide="chevron-down"></i>
+                                        </button>
+                                        <div class="select-content">
+                                            <div class="select-item" data-value="6" data-grade="A1">A1 (6 pts)</div>
+                                            <div class="select-item" data-value="5" data-grade="B2">B2 (5 pts)</div>
+                                            <div class="select-item" data-value="4" data-grade="B3">B3 (4 pts)</div>
+                                            <div class="select-item" data-value="3" data-grade="C4">C4 (3 pts)</div>
+                                            <div class="select-item" data-value="2" data-grade="C5">C5 (2 pts)</div>
+                                            <div class="select-item" data-value="1" data-grade="C6">C6 (1 pt)</div>
+                                        </div>
+                                    </div>
+                                    <div class="subject-select" data-subject="2">
+                                        <button type="button" class="select-trigger">
+                                            <span class="select-value">Select Grade</span>
+                                            <i data-lucide="chevron-down"></i>
+                                        </button>
+                                        <div class="select-content">
+                                            <div class="select-item" data-value="6" data-grade="A1">A1 (6 pts)</div>
+                                            <div class="select-item" data-value="5" data-grade="B2">B2 (5 pts)</div>
+                                            <div class="select-item" data-value="4" data-grade="B3">B3 (4 pts)</div>
+                                            <div class="select-item" data-value="3" data-grade="C4">C4 (3 pts)</div>
+                                            <div class="select-item" data-value="2" data-grade="C5">C5 (2 pts)</div>
+                                            <div class="select-item" data-value="1" data-grade="C6">C6 (1 pt)</div>
+                                        </div>
+                                    </div>
+                                    <div class="subject-select" data-subject="3">
+                                        <button type="button" class="select-trigger">
+                                            <span class="select-value">Select Grade</span>
+                                            <i data-lucide="chevron-down"></i>
+                                        </button>
+                                        <div class="select-content">
+                                            <div class="select-item" data-value="6" data-grade="A1">A1 (6 pts)</div>
+                                            <div class="select-item" data-value="5" data-grade="B2">B2 (5 pts)</div>
+                                            <div class="select-item" data-value="4" data-grade="B3">B3 (4 pts)</div>
+                                            <div class="select-item" data-value="3" data-grade="C4">C4 (3 pts)</div>
+                                            <div class="select-item" data-value="2" data-grade="C5">C5 (2 pts)</div>
+                                            <div class="select-item" data-value="1" data-grade="C6">C6 (1 pt)</div>
+                                        </div>
+                                    </div>
+                                    <div class="subject-select" data-subject="4">
+                                        <button type="button" class="select-trigger">
+                                            <span class="select-value">Select Grade</span>
+                                            <i data-lucide="chevron-down"></i>
+                                        </button>
+                                        <div class="select-content">
+                                            <div class="select-item" data-value="6" data-grade="A1">A1 (6 pts)</div>
+                                            <div class="select-item" data-value="5" data-grade="B2">B2 (5 pts)</div>
+                                            <div class="select-item" data-value="4" data-grade="B3">B3 (4 pts)</div>
+                                            <div class="select-item" data-value="3" data-grade="C4">C4 (3 pts)</div>
+                                            <div class="select-item" data-value="2" data-grade="C5">C5 (2 pts)</div>
+                                            <div class="select-item" data-value="1" data-grade="C6">C6 (1 pt)</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Two Sittings Subjects -->
+                            <div id="twoSittingsSubjects" class="subjects-container hidden">
+                                <div class="sitting-section">
+                                    <h4>First Sitting</h4>
+                                    <div class="subjects-grid">
+                                        <div class="subject-select" data-subject="0" data-sitting="first">
+                                            <button type="button" class="select-trigger">
+                                                <span class="select-value">Select Grade</span>
+                                                <i data-lucide="chevron-down"></i>
+                                            </button>
+                                            <div class="select-content">
+                                                <div class="select-item" data-value="6" data-grade="A1">A1 (6 pts)</div>
+                                                <div class="select-item" data-value="5" data-grade="B2">B2 (5 pts)</div>
+                                                <div class="select-item" data-value="4" data-grade="B3">B3 (4 pts)</div>
+                                                <div class="select-item" data-value="3" data-grade="C4">C4 (3 pts)</div>
+                                                <div class="select-item" data-value="2" data-grade="C5">C5 (2 pts)</div>
+                                                <div class="select-item" data-value="1" data-grade="C6">C6 (1 pt)</div>
+                                            </div>
+                                        </div>
+                                        <div class="subject-select" data-subject="1" data-sitting="first">
+                                            <button type="button" class="select-trigger">
+                                                <span class="select-value">Select Grade</span>
+                                                <i data-lucide="chevron-down"></i>
+                                            </button>
+                                            <div class="select-content">
+                                                <div class="select-item" data-value="6" data-grade="A1">A1 (6 pts)</div>
+                                                <div class="select-item" data-value="5" data-grade="B2">B2 (5 pts)</div>
+                                                <div class="select-item" data-value="4" data-grade="B3">B3 (4 pts)</div>
+                                                <div class="select-item" data-value="3" data-grade="C4">C4 (3 pts)</div>
+                                                <div class="select-item" data-value="2" data-grade="C5">C5 (2 pts)</div>
+                                                <div class="select-item" data-value="1" data-grade="C6">C6 (1 pt)</div>
+                                            </div>
+                                        </div>
+                                        <div class="subject-select" data-subject="2" data-sitting="first">
+                                            <button type="button" class="select-trigger">
+                                                <span class="select-value">Select Grade</span>
+                                                <i data-lucide="chevron-down"></i>
+                                            </button>
+                                            <div class="select-content">
+                                                <div class="select-item" data-value="6" data-grade="A1">A1 (6 pts)</div>
+                                                <div class="select-item" data-value="5" data-grade="B2">B2 (5 pts)</div>
+                                                <div class="select-item" data-value="4" data-grade="B3">B3 (4 pts)</div>
+                                                <div class="select-item" data-value="3" data-grade="C4">C4 (3 pts)</div>
+                                                <div class="select-item" data-value="2" data-grade="C5">C5 (2 pts)</div>
+                                                <div class="select-item" data-value="1" data-grade="C6">C6 (1 pt)</div>
+                                            </div>
+                                        </div>
+                                        <div class="subject-select" data-subject="3" data-sitting="first">
+                                            <button type="button" class="select-trigger">
+                                                <span class="select-value">Select Grade</span>
+                                                <i data-lucide="chevron-down"></i>
+                                            </button>
+                                            <div class="select-content">
+                                                <div class="select-item" data-value="6" data-grade="A1">A1 (6 pts)</div>
+                                                <div class="select-item" data-value="5" data-grade="B2">B2 (5 pts)</div>
+                                                <div class="select-item" data-value="4" data-grade="B3">B3 (4 pts)</div>
+                                                <div class="select-item" data-value="3" data-grade="C4">C4 (3 pts)</div>
+                                                <div class="select-item" data-value="2" data-grade="C5">C5 (2 pts)</div>
+                                                <div class="select-item" data-value="1" data-grade="C6">C6 (1 pt)</div>
+                                            </div>
+                                        </div>
+                                        <div class="subject-select" data-subject="4" data-sitting="first">
+                                            <button type="button" class="select-trigger">
+                                                <span class="select-value">Select Grade</span>
+                                                <i data-lucide="chevron-down"></i>
+                                            </button>
+                                            <div class="select-content">
+                                                <div class="select-item" data-value="6" data-grade="A1">A1 (6 pts)</div>
+                                                <div class="select-item" data-value="5" data-grade="B2">B2 (5 pts)</div>
+                                                <div class="select-item" data-value="4" data-grade="B3">B3 (4 pts)</div>
+                                                <div class="select-item" data-value="3" data-grade="C4">C4 (3 pts)</div>
+                                                <div class="select-item" data-value="2" data-grade="C5">C5 (2 pts)</div>
+                                                <div class="select-item" data-value="1" data-grade="C6">C6 (1 pt)</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="sitting-section">
+                                    <h4>Second Sitting</h4>
+                                    <div class="subjects-grid">
+                                        <div class="subject-select" data-subject="0" data-sitting="second">
+                                            <button type="button" class="select-trigger">
+                                                <span class="select-value">Select Grade</span>
+                                                <i data-lucide="chevron-down"></i>
+                                            </button>
+                                            <div class="select-content">
+                                                <div class="select-item" data-value="6" data-grade="A1">A1 (6 pts)</div>
+                                                <div class="select-item" data-value="5" data-grade="B2">B2 (5 pts)</div>
+                                                <div class="select-item" data-value="4" data-grade="B3">B3 (4 pts)</div>
+                                                <div class="select-item" data-value="3" data-grade="C4">C4 (3 pts)</div>
+                                                <div class="select-item" data-value="2" data-grade="C5">C5 (2 pts)</div>
+                                                <div class="select-item" data-value="1" data-grade="C6">C6 (1 pt)</div>
+                                            </div>
+                                        </div>
+                                        <div class="subject-select" data-subject="1" data-sitting="second">
+                                            <button type="button" class="select-trigger">
+                                                <span class="select-value">Select Grade</span>
+                                                <i data-lucide="chevron-down"></i>
+                                            </button>
+                                            <div class="select-content">
+                                                <div class="select-item" data-value="6" data-grade="A1">A1 (6 pts)</div>
+                                                <div class="select-item" data-value="5" data-grade="B2">B2 (5 pts)</div>
+                                                <div class="select-item" data-value="4" data-grade="B3">B3 (4 pts)</div>
+                                                <div class="select-item" data-value="3" data-grade="C4">C4 (3 pts)</div>
+                                                <div class="select-item" data-value="2" data-grade="C5">C5 (2 pts)</div>
+                                                <div class="select-item" data-value="1" data-grade="C6">C6 (1 pt)</div>
+                                            </div>
+                                        </div>
+                                        <div class="subject-select" data-subject="2" data-sitting="second">
+                                            <button type="button" class="select-trigger">
+                                                <span class="select-value">Select Grade</span>
+                                                <i data-lucide="chevron-down"></i>
+                                            </button>
+                                            <div class="select-content">
+                                                <div class="select-item" data-value="6" data-grade="A1">A1 (6 pts)</div>
+                                                <div class="select-item" data-value="5" data-grade="B2">B2 (5 pts)</div>
+                                                <div class="select-item" data-value="4" data-grade="B3">B3 (4 pts)</div>
+                                                <div class="select-item" data-value="3" data-grade="C4">C4 (3 pts)</div>
+                                                <div class="select-item" data-value="2" data-grade="C5">C5 (2 pts)</div>
+                                                <div class="select-item" data-value="1" data-grade="C6">C6 (1 pt)</div>
+                                            </div>
+                                        </div>
+                                        <div class="subject-select" data-subject="3" data-sitting="second">
+                                            <button type="button" class="select-trigger">
+                                                <span class="select-value">Select Grade</span>
+                                                <i data-lucide="chevron-down"></i>
+                                            </button>
+                                            <div class="select-content">
+                                                <div class="select-item" data-value="6" data-grade="A1">A1 (6 pts)</div>
+                                                <div class="select-item" data-value="5" data-grade="B2">B2 (5 pts)</div>
+                                                <div class="select-item" data-value="4" data-grade="B3">B3 (4 pts)</div>
+                                                <div class="select-item" data-value="3" data-grade="C4">C4 (3 pts)</div>
+                                                <div class="select-item" data-value="2" data-grade="C5">C5 (2 pts)</div>
+                                                <div class="select-item" data-value="1" data-grade="C6">C6 (1 pt)</div>
+                                            </div>
+                                        </div>
+                                        <div class="subject-select" data-subject="4" data-sitting="second">
+                                            <button type="button" class="select-trigger">
+                                                <span class="select-value">Select Grade</span>
+                                                <i data-lucide="chevron-down"></i>
+                                            </button>
+                                            <div class="select-content">
+                                                <div class="select-item" data-value="6" data-grade="A1">A1 (6 pts)</div>
+                                                <div class="select-item" data-value="5" data-grade="B2">B2 (5 pts)</div>
+                                                <div class="select-item" data-value="4" data-grade="B3">B3 (4 pts)</div>
+                                                <div class="select-item" data-value="3" data-grade="C4">C4 (3 pts)</div>
+                                                <div class="select-item" data-value="2" data-grade="C5">C5 (2 pts)</div>
+                                                <div class="select-item" data-value="1" data-grade="C6">C6 (1 pt)</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="score-preview">
+                                O-Level Points: <span id="olevelPoints">0.00</span> / 30
+                            </div>
+                        </div>
+
+                        <!-- Calculate Button -->        <button type="button" class="calculate-btn" id="calculateBtn">
+                                <i data-lucide="calculator"></i>
+                                Calculate Score
+                            </button>
+            </form>
+
+                    <!-- Results Section -->
+                    <div class="results-section hidden" id="resultsSection">
+                        <div class="results-card">
+                            <div class="results-header">
+                                <i data-lucide="trophy"></i>
+                                <h3>Your Screening Score</h3>
+                            </div>
+                            
+                            <div class="score-breakdown">
+                                <div class="score-item">
+                                    <span class="score-label">JAMB Score</span>
+                                    <span class="score-value" id="resultJamb">0.00</span>
+                                </div>
+                                <div class="score-item">
+                                    <span class="score-label">Sitting Bonus</span>
+                                    <span class="score-value" id="resultSitting">0</span>
+                                </div>
+                                <div class="score-item">
+                                    <span class="score-label">O-Level Score</span>
+                                    <span class="score-value" id="resultOlevel">0.00</span>
+                                </div>
+                                <div class="score-divider"></div>
+                                <div class="score-item total">
+                                    <span class="score-label">Total Score</span>
+                                    <span class="score-value" id="resultTotal">0.00</span>
+                                </div>
+                            </div>
+
+                            <div class="results-actions">
+                                <button type="button" class="btn-secondary" id="recalculateBtn">
+                                    <i data-lucide="refresh-cw"></i>
+                                    Recalculate
+                                </button>
+                                <a href="https://wa.me/+2349164613487" class="btn-primary" target="_blank">
+                                    <i data-lucide="message-circle"></i>
+                                    Contact SUG PRO
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <div class="footer-content">
+                    <p>&copy; 2025 FUOYE Students' Union Government (Better Days Cabinet) led by Comr. James Adio</p>
+                    <a href="https://github.com/habibthadev" target="_blank" class="footer-link">
+                        <i data-lucide="github"></i>
+                        Built by @habibthadev
+                    </a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
